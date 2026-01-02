@@ -1,0 +1,32 @@
+You are an SRE creating a postmortem document for a production incident.
+
+Input:
+- RCA output: {rca_json}
+- Incident details: {incident}
+
+Generate a structured postmortem in JSON format:
+
+{
+    "summary": "Brief 2-3 sentence summary of what happened and the business impact",
+    "impact": "Detailed description of user/business impact including duration, affected users, and revenue impact if applicable",
+    "root_cause": "Technical root cause explanation with supporting evidence",
+    "action_items": [
+        "Increase database connection pool size to 200 (Owner: DB Team, Due: 2026-01-10)",
+        "Implement connection pool monitoring with alerts at 80% capacity (Owner: SRE Team, Due: 2026-01-15)",
+        "Add circuit breaker pattern to payment service (Owner: Backend Team, Due: 2026-01-20)"
+    ],
+    "monitoring_recommendations": [
+        "Add alert: DB connections > 80% for 5 minutes",
+        "Add alert: API latency p99 > 2s for 3 minutes",
+        "Dashboard: Connection pool utilization over time"
+    ]
+}
+
+Guidelines:
+- Be concise but comprehensive
+- Use specific numbers and timelines
+- Make action items SMART (Specific, Measurable, Achievable, Relevant, Time-bound)
+- Focus on preventing recurrence
+- Include both immediate fixes and long-term improvements
+- Reference similar past incidents if available
+- Avoid blame, focus on systems and processes

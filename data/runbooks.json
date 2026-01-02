@@ -1,0 +1,23 @@
+[
+    {
+        "id": "runbook_001",
+        "title": "Database Connection Pool Exhaustion",
+        "service": "database",
+        "problem": "Service unable to acquire database connections, connection pool at 100% capacity",
+        "solution": "1. Check current connection count: SELECT count(*) FROM pg_stat_activity\n2. Identify long-running queries: SELECT pid, now() - pg_stat_activity.query_start AS duration, query FROM pg_stat_activity WHERE state = 'active' ORDER BY duration DESC\n3. Kill blocking queries if necessary: SELECT pg_terminate_backend(pid)\n4. Restart application to clear connection pool\n5. Increase max_connections in postgresql.conf\n6. Review application connection pooling configuration"
+    },
+    {
+        "id": "runbook_002",
+        "title": "High Memory Usage / OOM",
+        "service": "application",
+        "problem": "Application memory usage continuously growing, approaching OOM",
+        "solution": "1. Check current memory usage: docker stats or kubectl top pods\n2. Generate heap dump: jmap -dump:live,format=b,file=heap.bin <pid>\n3. Analyze heap dump for memory leaks\n4. Check for unbounded caches or collections\n5. Restart service to free memory\n6. Implement memory limits and monitoring\n7. Add periodic garbage collection if needed"
+    },
+    {
+        "id": "runbook_003",
+        "title": "API Latency Spike",
+        "service": "api",
+        "problem": "API response times significantly higher than baseline",
+        "solution": "1. Check database query performance: pg_stat_statements\n2. Identify slow queries and missing indexes\n3. Check external API dependencies latency\n4. Review recent deployments for code changes\n5. Check resource utilization (CPU, memory, disk I/O)\n6. Enable query logging for detailed analysis\n7. Add database indexes if needed\n8. Implement caching for frequently accessed data"
+    }
+]

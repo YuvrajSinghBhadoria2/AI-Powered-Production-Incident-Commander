@@ -1,0 +1,38 @@
+[
+    {
+        "id": "incident_001",
+        "title": "Database Connection Pool Exhaustion",
+        "service": "payment-api",
+        "severity": "critical",
+        "description": "Payment API experienced complete outage due to database connection pool exhaustion",
+        "root_cause": "Database connection pool reached maximum capacity (100 connections) during peak traffic. Connections were not being released properly due to missing timeout configuration.",
+        "resolution": "Restarted payment-api service to clear connections. Increased connection pool size to 200. Added connection timeout of 30 seconds. Implemented connection pool monitoring.",
+        "timestamp": "2025-12-15T14:30:00Z",
+        "duration_minutes": 23,
+        "affected_users": 15000
+    },
+    {
+        "id": "incident_002",
+        "title": "Memory Leak in User Service",
+        "service": "user-service",
+        "severity": "high",
+        "description": "User service memory usage grew from 2GB to 8GB over 6 hours, causing OOM crashes",
+        "root_cause": "Memory leak in session management code. User sessions were cached indefinitely without expiration.",
+        "resolution": "Deployed hotfix with session TTL of 24 hours. Implemented memory monitoring alerts.",
+        "timestamp": "2025-12-20T09:15:00Z",
+        "duration_minutes": 45,
+        "affected_users": 8000
+    },
+    {
+        "id": "incident_003",
+        "title": "API Latency Spike from Slow Database Query",
+        "service": "gateway",
+        "severity": "high",
+        "description": "API latency increased from 200ms to 5s affecting all endpoints",
+        "root_cause": "Missing database index on user_events table. Query scanning 10M rows for each request.",
+        "resolution": "Added composite index on (user_id, created_at). Query time reduced from 4.8s to 12ms.",
+        "timestamp": "2025-12-28T16:45:00Z",
+        "duration_minutes": 18,
+        "affected_users": 25000
+    }
+]
