@@ -1,0 +1,30 @@
+name: Docker CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build Backend
+      uses: docker/build-push-action@v4
+      with:
+        context: ./backend
+        push: false
+        tags: ai-incident-commander-backend:latest
+
+    - name: Build Frontend
+      uses: docker/build-push-action@v4
+      with:
+        context: ./frontend
+        push: false
+        tags: ai-incident-commander-frontend:latest

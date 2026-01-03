@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from app.routes import ingest, analyze, postmortem
-from app.db.sqlite_storage import storage
+from app.db import storage
 from app.services.rag_engine import rag_engine
 
 

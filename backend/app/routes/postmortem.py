@@ -1,15 +1,16 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List
 
 from app.models.log_models import Postmortem
-from app.db.sqlite_storage import storage
+from app.db import storage
 from app.services.llm_rca import llm_rca_engine
+from app.services.security import get_api_key
 
 router = APIRouter(prefix="/postmortem", tags=["postmortem"])
 
 
 @router.get("/{incident_id}", response_model=Postmortem)
-async def get_postmortem(incident_id: str):
+async def get_postmortem(incident_id: str, api_key: str = Depends(get_api_key)):
     """
     Get or generate postmortem for an incident.
     If postmortem doesn't exist, generates it from RCA.
@@ -45,7 +46,7 @@ async def get_postmortem(incident_id: str):
 
 
 @router.post("/{incident_id}", response_model=Postmortem, status_code=status.HTTP_201_CREATED)
-async def create_postmortem(incident_id: str):
+async def create_postmortem(incident_id: str, api_key: str = Depends(get_api_key)):
     """
     Generate postmortem for an incident.
     Requires that RCA has been performed.
@@ -104,7 +105,7 @@ async def create_postmortem(incident_id: str):
 
 
 @router.get("/", response_model=List[Postmortem])
-async def list_postmortems(limit: int = 20):
+async def list_postmortems(limit: int = 20, api_key: str = Depends(get_api_key)):
     """List recent postmortems"""
     try:
         # Get recent incidents

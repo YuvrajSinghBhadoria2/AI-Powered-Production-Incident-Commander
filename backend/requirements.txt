@@ -14,3 +14,8 @@ numpy>=1.24.0
 # Utilities
 python-dateutil>=2.8.0
 httpx>=0.26.0
+
+# Production
+gunicorn>=21.2.0
+psycopg2-binary>=2.9.9
+asyncpg>=0.29.0

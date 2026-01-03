@@ -1,15 +1,16 @@
 import asyncio
 import time
 from datetime import datetime, timedelta
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from typing import Optional
 
 from app.models.log_models import AnalyzeIncidentRequest, AnalyzeIncidentResponse, Incident, RCAOutput
-from app.db.sqlite_storage import storage
+from app.db import storage
 from app.services.incident_detection import incident_detector
 from app.services.context_compression import context_compressor
 from app.services.rag_engine import rag_engine
 from app.services.llm_rca import llm_rca_engine
+from app.services.security import get_api_key
 
 router = APIRouter(prefix="/analyze", tags=["analysis"])
 
@@ -33,7 +34,7 @@ def parse_time_window(time_window: str) -> tuple[datetime, datetime]:
 
 
 @router.post("/incident", response_model=AnalyzeIncidentResponse)
-async def analyze_incident(request: AnalyzeIncidentRequest):
+async def analyze_incident(request: AnalyzeIncidentRequest, api_key: str = Depends(get_api_key)):
     """
     Analyze incidents within a time window or a specific incident.
     """
@@ -132,7 +133,7 @@ async def analyze_incident(request: AnalyzeIncidentRequest):
 
 
 @router.get("/incidents")
-async def get_incidents(limit: int = 50):
+async def get_incidents(limit: int = 50, api_key: str = Depends(get_api_key)):
     """Get recent incidents"""
     try:
         incidents = await storage.get_all_incidents(limit)
@@ -149,7 +150,7 @@ async def get_incidents(limit: int = 50):
 
 
 @router.get("/incidents/{incident_id}")
-async def get_incident(incident_id: str):
+async def get_incident(incident_id: str, api_key: str = Depends(get_api_key)):
     """Get specific incident by ID"""
     try:
         incident = await storage.get_incident(incident_id)

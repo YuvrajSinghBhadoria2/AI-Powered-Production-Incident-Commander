@@ -1,16 +1,17 @@
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from typing import List, Dict, Any
 from datetime import datetime
 
 from app.models.log_models import LogEntry, MetricEntry
-from app.db.sqlite_storage import storage
+from app.db import storage
 from app.services.otel_mapper import otel_mapper
+from app.services.security import get_api_key
 
 router = APIRouter(prefix="/ingest", tags=["ingestion"])
 
 
 @router.post("/logs", status_code=status.HTTP_201_CREATED)
-async def ingest_logs(logs: List[LogEntry]):
+async def ingest_logs(logs: List[LogEntry], api_key: str = Depends(get_api_key)):
     """
     Ingest log entries.
     Accepts single log or batch of logs.
@@ -35,7 +36,7 @@ async def ingest_logs(logs: List[LogEntry]):
 
 
 @router.post("/logs/single", status_code=status.HTTP_201_CREATED)
-async def ingest_single_log(log: LogEntry):
+async def ingest_single_log(log: LogEntry, api_key: str = Depends(get_api_key)):
     """Ingest a single log entry"""
     try:
         log_dict = log.model_dump()
@@ -54,7 +55,7 @@ async def ingest_single_log(log: LogEntry):
 
 
 @router.post("/metrics", status_code=status.HTTP_201_CREATED)
-async def ingest_metrics(metrics: List[MetricEntry]):
+async def ingest_metrics(metrics: List[MetricEntry], api_key: str = Depends(get_api_key)):
     """
     Ingest metric entries.
     Accepts single metric or batch of metrics.
@@ -79,7 +80,7 @@ async def ingest_metrics(metrics: List[MetricEntry]):
 
 
 @router.post("/metrics/single", status_code=status.HTTP_201_CREATED)
-async def ingest_single_metric(metric: MetricEntry):
+async def ingest_single_metric(metric: MetricEntry, api_key: str = Depends(get_api_key)):
     """Ingest a single metric entry"""
     try:
         metric_dict = metric.model_dump()
@@ -96,7 +97,7 @@ async def ingest_single_metric(metric: MetricEntry):
             detail=f"Failed to ingest metric: {str(e)}"
         )
 @router.post("/otel", status_code=status.HTTP_201_CREATED)
-async def ingest_otel_data(payload: Dict[str, Any]):
+async def ingest_otel_data(payload: Dict[str, Any], api_key: str = Depends(get_api_key)):
     """
     Ingest raw OTLP JSON data (logs or metrics).
     """
@@ -137,7 +138,7 @@ async def ingest_otel_data(payload: Dict[str, Any]):
 
 
 @router.post("/flush", status_code=status.HTTP_200_OK)
-async def flush_all_data():
+async def flush_all_data(api_key: str = Depends(get_api_key)):
     """Flush all data from the database"""
     try:
         await storage.clear_all_data()
