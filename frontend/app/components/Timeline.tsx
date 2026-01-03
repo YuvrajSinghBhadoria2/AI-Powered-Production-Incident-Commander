@@ -1,6 +1,7 @@
 'use client'
 
-import { Clock, AlertTriangle } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { Clock, AlertTriangle, CheckCircle2 } from 'lucide-react'
 
 interface TimelineEvent {
     timestamp: string
@@ -14,50 +15,82 @@ interface TimelineProps {
 
 export default function Timeline({ timeline }: TimelineProps) {
     return (
-        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6">
-            <div className="flex items-center gap-2 mb-6">
-                <Clock className="w-5 h-5 text-blue-400" />
-                <h2 className="text-xl font-semibold text-white">Incident Timeline</h2>
+        <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="glass-card rounded-[2rem] p-8 border-white/5 relative overflow-hidden"
+        >
+            <div className="absolute top-0 right-0 p-8 opacity-5">
+                <Clock className="w-32 h-32 text-blue-400" />
             </div>
 
-            <div className="relative">
-                {/* Timeline line */}
-                <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-transparent" />
+            <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                <div className="p-2 bg-blue-500/20 rounded-lg">
+                    <Clock className="w-5 h-5 text-blue-400" />
+                </div>
+                Incident Timeline
+            </h2>
 
-                {/* Timeline events */}
-                <div className="space-y-6">
-                    {timeline.map((event, index) => (
-                        <div key={index} className="relative pl-12">
-                            {/* Timeline dot */}
-                            <div className="absolute left-0 top-1 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg shadow-blue-500/50">
-                                <div className="w-3 h-3 rounded-full bg-white" />
-                            </div>
+            <div className="relative ml-4">
+                {/* Vertical Line */}
+                <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-transparent opacity-30" />
 
-                            {/* Event card */}
-                            <div className="bg-gray-900/50 border border-gray-700/50 rounded-lg p-4 hover:border-blue-500/50 transition-all duration-200">
-                                <div className="flex items-start gap-3">
-                                    <AlertTriangle className="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" />
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <h3 className="font-semibold text-white">{event.event}</h3>
-                                            <span className="text-xs text-gray-400">
-                                                {new Date(event.timestamp).toLocaleTimeString()}
-                                            </span>
-                                        </div>
-                                        <p className="text-sm text-gray-400">{event.impact}</p>
+                <div className="space-y-10">
+                    {timeline.length > 0 ? (
+                        timeline.map((item, idx) => (
+                            <motion.div
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: idx * 0.1 }}
+                                key={idx}
+                                className="relative pl-10"
+                            >
+                                {/* Node */}
+                                <div className={`absolute left-[-5px] top-1.5 w-3 h-3 rounded-full border-2 border-background z-10 ${idx === 0 ? 'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]' : 'bg-purple-500'
+                                    }`} />
+
+                                <div className="space-y-2">
+                                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest bg-white/5 px-2 py-0.5 rounded">
+                                            {new Date(item.timestamp).toLocaleTimeString()}
+                                        </span>
+                                        <h3 className="text-lg font-bold text-white leading-tight">
+                                            {item.event}
+                                        </h3>
+                                    </div>
+                                    <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex items-start gap-3 group hover:bg-white/[0.04] transition-colors">
+                                        <AlertTriangle className="w-4 h-4 text-amber-500/50 mt-0.5 shrink-0" />
+                                        <p className="text-sm text-slate-400 leading-relaxed group-hover:text-slate-300">
+                                            <span className="text-slate-500 font-bold uppercase text-[10px] inline-block mr-2">Impact:</span>
+                                            {item.impact}
+                                        </p>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
+                        ))
+                    ) : (
+                        <div className="py-20 text-center opacity-50">
+                            <Clock className="w-12 h-12 text-slate-500 mx-auto mb-4" />
+                            <p className="text-slate-500 font-medium">No timeline events detected yet.</p>
                         </div>
-                    ))}
+                    )}
+
+                    {timeline.length > 0 && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: timeline.length * 0.1 }}
+                            className="relative pl-10"
+                        >
+                            <div className="absolute left-[-5px] top-1.5 w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                            <div className="flex items-center gap-3">
+                                <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                                <span className="text-sm font-bold text-emerald-400/80 uppercase tracking-widest">Analysis Converged</span>
+                            </div>
+                        </motion.div>
+                    )}
                 </div>
             </div>
-
-            {timeline.length === 0 && (
-                <div className="text-center py-8 text-gray-400">
-                    No timeline events available
-                </div>
-            )}
-        </div>
+        </motion.div>
     )
 }

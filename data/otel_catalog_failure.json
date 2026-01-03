@@ -1,0 +1,151 @@
+{
+  "resourceLogs": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "productcatalogservice"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "production"
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "io.opentelemetry.demo"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1767373450548188928",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Database connection pool exhausted"
+              },
+              "traceId": "89898d334d34401aab18f724404ded2a",
+              "spanId": "bd6d3cda193c4cda",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450549188928",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Database connection pool exhausted"
+              },
+              "traceId": "6062a5f2d04e42f5be91e6a27cb5ea67",
+              "spanId": "f260521202c141de",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450550188928",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Database connection pool exhausted"
+              },
+              "traceId": "f9b261c7150a40669a5d4f6e563750fa",
+              "spanId": "45adf6c2a2c04f8c",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450551188928",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Database connection pool exhausted"
+              },
+              "traceId": "8455faa99b5d47208fa99b2c40182b95",
+              "spanId": "06a92bb3fd0e45c5",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450552188928",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Database connection pool exhausted"
+              },
+              "traceId": "5ae923df1dfd4d2a92a1eff13c59e0bf",
+              "spanId": "6265017faadb42f8",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

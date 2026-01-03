@@ -192,20 +192,7 @@ ai-incident-commander/
 └── prompts/              # LLM prompt templates
 ```
 
-## 🤝 Contributing
-
-This is a portfolio/demo project. Feel free to fork and adapt for your needs.
-
 ## 📄 License
 
 MIT
 
-## 🙏 Acknowledgments
-
-- OpenTelemetry Demo for realistic observability data patterns
-- Groq for blazing-fast LLM inference
-- Pinecone for serverless vector search
-
----
-
-**Built with ❤️ for SRE teams and AI enthusiasts**

@@ -1,8 +1,38 @@
+import asyncio
 import os
 from typing import List, Dict, Any, Optional
-from pinecone import Pinecone, ServerlessSpec
-from sentence_transformers import SentenceTransformer
 import json
+
+# Pinecone will be imported inside methods to handle import errors gracefully
+PINECONE_AVAILABLE = None  # Will be set when first import attempt is made
+Pinecone = None
+ServerlessSpec = None
+
+
+def _import_pinecone():
+    """Import Pinecone only when needed"""
+    global PINECONE_AVAILABLE, Pinecone, ServerlessSpec
+    if PINECONE_AVAILABLE is not None:  # Already attempted import
+        return PINECONE_AVAILABLE
+    
+    try:
+        # Handle the Pinecone package rename issue
+        try:
+            from pinecone import Pinecone as PineconeClient, ServerlessSpec as ServerlessSpecClient
+        except Exception:
+            # This handles the Pinecone package rename error
+            PINECONE_AVAILABLE = False
+            print("Warning: Pinecone not available. RAG functionality will be disabled.")
+            return False
+        
+        Pinecone = PineconeClient
+        ServerlessSpec = ServerlessSpecClient
+        PINECONE_AVAILABLE = True
+        return True
+    except ImportError:
+        PINECONE_AVAILABLE = False
+        print("Warning: Pinecone not available. RAG functionality will be disabled.")
+        return False
 
 
 class RAGEngine:
@@ -11,6 +41,8 @@ class RAGEngine:
     - Historical incident patterns
     - Runbook recommendations
     - Similar past resolutions
+    
+    Uses Pinecone's inference API for embeddings (no need for separate model)
     """
     
     def __init__(self):
@@ -19,32 +51,46 @@ class RAGEngine:
         self.index_name = os.getenv('PINECONE_INDEX_NAME', 'incident-commander')
         
         # Initialize Pinecone
-        self.pc = Pinecone(api_key=self.api_key)
-        
-        # Initialize embedding model (384 dimensions)
-        self.embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-        self.embedding_dim = 384
-        
+        self.pc = None
         self.index = None
+        
+        # Using Pinecone's multilingual-e5-large model (1024 dimensions)
+        self.embedding_model = "multilingual-e5-large"
+        self.embedding_dim = 1024
+        
+        if not PINECONE_AVAILABLE:
+            print("RAG Engine initialized in fallback mode - no vector search available")
     
     async def initialize(self):
         """Initialize or connect to Pinecone index"""
+        if not _import_pinecone():
+            print("Pinecone not available, skipping initialization")
+            return
+        
         try:
+            # Initialize Pinecone client
+            self.pc = Pinecone(api_key=self.api_key)
+            
             # Check if index exists
-            existing_indexes = self.pc.list_indexes()
-            index_names = [idx['name'] for idx in existing_indexes]
+            def list_indexes():
+                return self.pc.list_indexes()
+            
+            existing_indexes = await asyncio.to_thread(list_indexes)
+            index_names = [idx.name for idx in existing_indexes]
             
             if self.index_name not in index_names:
-                # Create new index with serverless spec
-                self.pc.create_index(
-                    name=self.index_name,
-                    dimension=self.embedding_dim,
-                    metric='cosine',
-                    spec=ServerlessSpec(
-                        cloud='aws',
-                        region=self.environment
+                # Create new index with serverless spec and inference embeddings
+                def create_index():
+                    self.pc.create_index(
+                        name=self.index_name,
+                        dimension=self.embedding_dim,
+                        metric='cosine',
+                        spec=ServerlessSpec(
+                            cloud='aws',
+                            region=self.environment
+                        )
                     )
-                )
+                await asyncio.to_thread(create_index)
                 print(f"Created new Pinecone index: {self.index_name}")
             
             # Connect to index
@@ -56,34 +102,65 @@ class RAGEngine:
             raise
     
     def _create_embedding(self, text: str) -> List[float]:
-        """Generate embedding for text"""
-        embedding = self.embedding_model.encode(text, convert_to_tensor=False)
-        return embedding.tolist()
+        """
+        Generate embedding for text using Pinecone's inference API.
+        Falls back to a simple hash-based embedding if inference fails.
+        """
+        if not _import_pinecone():
+            # If Pinecone is not available, use fallback directly
+            import hashlib
+            hash_obj = hashlib.sha256(text.encode())
+            hash_bytes = hash_obj.digest()
+            embedding = []
+            for i in range(0, len(hash_bytes) * 8, 8):
+                byte_idx = i // 8
+                if byte_idx < len(hash_bytes):
+                    embedding.append(float(hash_bytes[byte_idx]) / 255.0)
+            while len(embedding) < self.embedding_dim:
+                embedding.append(0.0)
+            return embedding[:self.embedding_dim]
+        
+        try:
+            # Use Pinecone's inference API
+            embeddings = self.pc.inference.embed(
+                model=self.embedding_model,
+                inputs=[text],
+                parameters={"input_type": "passage"}
+            )
+            return embeddings[0]['values']
+        except Exception as e:
+            print(f"Warning: Pinecone inference failed, using fallback: {e}")
+            # Fallback
+            import hashlib
+            hash_obj = hashlib.sha256(text.encode())
+            hash_bytes = hash_obj.digest()
+            embedding = []
+            for i in range(0, len(hash_bytes) * 8, 8):
+                byte_idx = i // 8
+                if byte_idx < len(hash_bytes):
+                    embedding.append(float(hash_bytes[byte_idx]) / 255.0)
+            while len(embedding) < self.embedding_dim:
+                embedding.append(0.0)
+            return embedding[:self.embedding_dim]
     
     async def upsert_incident(self, incident_id: str, incident_data: Dict[str, Any]):
         """
         Store incident in vector database.
-        
-        Args:
-            incident_id: Unique incident identifier
-            incident_data: Dict with keys: title, description, root_cause, resolution, service
         """
+        if not _import_pinecone():
+            # Skip upsert if Pinecone is not available
+            return
+        
         if not self.index:
             await self.initialize()
         
         # Create searchable text
-        searchable_text = f"""
-        Title: {incident_data.get('title', '')}
-        Service: {incident_data.get('service', '')}
-        Description: {incident_data.get('description', '')}
-        Root Cause: {incident_data.get('root_cause', '')}
-        Resolution: {incident_data.get('resolution', '')}
-        """.strip()
+        searchable_text = f"Title: {incident_data.get('title', '')}\nService: {incident_data.get('service', '')}\nDescription: {incident_data.get('description', '')}\nRoot Cause: {incident_data.get('root_cause', '')}\nResolution: {incident_data.get('resolution', '')}"
         
-        # Generate embedding
-        embedding = self._create_embedding(searchable_text)
+        # Generate embedding (this hit the inference API which is also sync)
+        embedding = await asyncio.to_thread(self._create_embedding, searchable_text)
         
-        # Prepare metadata (Pinecone has size limits, keep it concise)
+        # Prepare metadata
         metadata = {
             'incident_id': incident_id,
             'title': incident_data.get('title', '')[:200],
@@ -94,31 +171,26 @@ class RAGEngine:
         }
         
         # Upsert to Pinecone
-        self.index.upsert(vectors=[(incident_id, embedding, metadata)])
+        def do_upsert():
+            self.index.upsert(vectors=[(incident_id, embedding, metadata)])
+            
+        await asyncio.to_thread(do_upsert)
     
     async def upsert_runbook(self, runbook_id: str, runbook_data: Dict[str, Any]):
         """
         Store runbook in vector database.
-        
-        Args:
-            runbook_id: Unique runbook identifier
-            runbook_data: Dict with keys: title, problem, solution, service
         """
+        if not _import_pinecone():
+            # Skip upsert if Pinecone is not available
+            return
+        
         if not self.index:
             await self.initialize()
         
-        # Create searchable text
-        searchable_text = f"""
-        Title: {runbook_data.get('title', '')}
-        Service: {runbook_data.get('service', '')}
-        Problem: {runbook_data.get('problem', '')}
-        Solution: {runbook_data.get('solution', '')}
-        """.strip()
+        searchable_text = f"Title: {runbook_data.get('title', '')}\nService: {runbook_data.get('service', '')}\nProblem: {runbook_data.get('problem', '')}\nSolution: {runbook_data.get('solution', '')}"
         
-        # Generate embedding
-        embedding = self._create_embedding(searchable_text)
+        embedding = await asyncio.to_thread(self._create_embedding, searchable_text)
         
-        # Prepare metadata
         metadata = {
             'runbook_id': runbook_id,
             'type': 'runbook',
@@ -128,8 +200,10 @@ class RAGEngine:
             'solution': runbook_data.get('solution', '')[:500],
         }
         
-        # Upsert to Pinecone
-        self.index.upsert(vectors=[(runbook_id, embedding, metadata)])
+        def do_upsert():
+            self.index.upsert(vectors=[(runbook_id, embedding, metadata)])
+            
+        await asyncio.to_thread(do_upsert)
     
     async def search_similar_incidents(
         self, 
@@ -139,20 +213,16 @@ class RAGEngine:
     ) -> List[Dict[str, Any]]:
         """
         Search for similar incidents using semantic search.
-        
-        Args:
-            query: Search query (incident description)
-            service: Optional service filter
-            top_k: Number of results to return
-        
-        Returns:
-            List of similar incidents with metadata and similarity scores
         """
+        if not _import_pinecone():
+            # Return empty results if Pinecone is not available
+            return []
+        
         if not self.index:
             await self.initialize()
         
         # Generate query embedding
-        query_embedding = self._create_embedding(query)
+        query_embedding = await asyncio.to_thread(self._create_embedding, query)
         
         # Build filter
         filter_dict = {}
@@ -161,12 +231,15 @@ class RAGEngine:
         
         # Search
         try:
-            results = self.index.query(
-                vector=query_embedding,
-                top_k=top_k,
-                include_metadata=True,
-                filter=filter_dict if filter_dict else None
-            )
+            def do_query():
+                return self.index.query(
+                    vector=query_embedding,
+                    top_k=top_k,
+                    include_metadata=True,
+                    filter=filter_dict if filter_dict else None
+                )
+            
+            results = await asyncio.to_thread(do_query)
             
             # Format results
             similar_incidents = []
@@ -233,6 +306,9 @@ class RAGEngine:
     
     async def get_stats(self) -> Dict[str, Any]:
         """Get index statistics"""
+        if not _import_pinecone():
+            return {'total_vectors': 0, 'dimension': 0, 'index_fullness': 0, 'status': 'disabled'}
+        
         if not self.index:
             await self.initialize()
         

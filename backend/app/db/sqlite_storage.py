@@ -6,9 +6,14 @@ from pathlib import Path
 
 
 class SQLiteStorage:
-    def __init__(self, db_path: str = "data/incidents.db"):
-        self.db_path = db_path
-        Path(db_path).parent.mkdir(parents=True, exist_ok=True)
+    def __init__(self, db_path: Optional[str] = None):
+        if db_path is None:
+            # Set default path relative to project root
+            base_dir = Path(__file__).parent.parent.parent.parent
+            self.db_path = str(base_dir / "backend" / "data" / "incidents.db")
+        else:
+            self.db_path = db_path
+        Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
     
     async def initialize(self):
         """Create tables if they don't exist"""
@@ -114,10 +119,10 @@ class SQLiteStorage:
             return cursor.lastrowid
     
     async def insert_incident(self, incident_data: Dict[str, Any]) -> str:
-        """Insert an incident"""
+        """Insert an incident (idempotent)"""
         async with aiosqlite.connect(self.db_path) as db:
             await db.execute("""
-                INSERT INTO incidents (id, timestamp, service, severity, title, description, detected_by, status)
+                INSERT OR REPLACE INTO incidents (id, timestamp, service, severity, title, description, detected_by, status)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 incident_data['id'],
@@ -221,6 +226,16 @@ class SQLiteStorage:
             ) as cursor:
                 rows = await cursor.fetchall()
                 return [dict(row) for row in rows]
+
+
+    async def clear_all_data(self):
+        """Clear all tables (logs, metrics, incidents, postmortems)"""
+        async with aiosqlite.connect(self.db_path) as db:
+            await db.execute("DELETE FROM logs")
+            await db.execute("DELETE FROM metrics")
+            await db.execute("DELETE FROM incidents")
+            await db.execute("DELETE FROM postmortems")
+            await db.commit()
 
 
 # Global instance

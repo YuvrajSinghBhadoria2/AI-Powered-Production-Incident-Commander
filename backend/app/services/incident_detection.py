@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 from collections import defaultdict
 import statistics
+import uuid
 
 
 class IncidentDetector:
@@ -84,8 +85,11 @@ class IncidentDetector:
             error_messages = [log['message'] for log in logs if log.get('level') in ['error', 'critical']]
             most_common = max(set(error_messages), key=error_messages.count) if error_messages else "Unknown error"
             
+            import hashlib
+            incident_id = f"inc_{hashlib.md5(f'{service}:{most_common}'.encode()).hexdigest()[:12]}"
+            
             return {
-                'id': f"incident_{service}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                'id': incident_id,
                 'timestamp': datetime.now(),
                 'service': service,
                 'severity': 'critical' if error_rate > 0.2 else 'high',
@@ -117,12 +121,15 @@ class IncidentDetector:
         current_avg = statistics.mean(current_values)
         
         if baseline_avg > 0 and current_avg / baseline_avg > self.thresholds['latency_spike_multiplier']:
+            import hashlib
+            title = f'API Latency Spike in {service}'
+            incident_id = f"inc_{hashlib.md5(f'{service}:{title}'.encode()).hexdigest()[:12]}"
             return {
-                'id': f"incident_{service}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                'id': incident_id,
                 'timestamp': datetime.now(),
                 'service': service,
                 'severity': 'critical' if current_avg / baseline_avg > 5 else 'high',
-                'title': f'API Latency Spike in {service}',
+                'title': title,
                 'description': f'Latency increased from {baseline_avg:.0f}ms to {current_avg:.0f}ms ({current_avg/baseline_avg:.1f}x increase)',
                 'detected_by': 'latency_spike_detector'
             }
@@ -139,12 +146,15 @@ class IncidentDetector:
             avg_cpu = statistics.mean(recent_cpu)
             
             if avg_cpu > self.thresholds['cpu_threshold']:
+                import hashlib
+                title = f'High CPU Usage in {service}'
+                incident_id = f"inc_{hashlib.md5(f'{service}:{title}'.encode()).hexdigest()[:12]}"
                 return {
-                    'id': f"incident_{service}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                    'id': incident_id,
                     'timestamp': datetime.now(),
                     'service': service,
                     'severity': 'critical' if avg_cpu > 95 else 'high',
-                    'title': f'High CPU Usage in {service}',
+                    'title': title,
                     'description': f'CPU usage at {avg_cpu:.1f}% (threshold: {self.thresholds["cpu_threshold"]}%)',
                     'detected_by': 'resource_exhaustion_detector'
                 }
@@ -155,12 +165,15 @@ class IncidentDetector:
             avg_memory = statistics.mean(recent_memory)
             
             if avg_memory > self.thresholds['memory_threshold']:
+                import hashlib
+                title = f'High Memory Usage in {service}'
+                incident_id = f"inc_{hashlib.md5(f'{service}:{title}'.encode()).hexdigest()[:12]}"
                 return {
-                    'id': f"incident_{service}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                    'id': incident_id,
                     'timestamp': datetime.now(),
                     'service': service,
                     'severity': 'critical' if avg_memory > 95 else 'high',
-                    'title': f'High Memory Usage in {service}',
+                    'title': title,
                     'description': f'Memory usage at {avg_memory:.1f}% (threshold: {self.thresholds["memory_threshold"]}%)',
                     'detected_by': 'resource_exhaustion_detector'
                 }
@@ -189,12 +202,15 @@ class IncidentDetector:
                 key=lambda x: sum(1 for e in db_errors if e['message'] == x)
             )
             
+            import hashlib
+            title = f'Database Connection Issues in {service}'
+            incident_id = f"inc_{hashlib.md5(f'{service}:{title}'.encode()).hexdigest()[:12]}"
             return {
-                'id': f"incident_{service}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                'id': incident_id,
                 'timestamp': datetime.now(),
                 'service': service,
                 'severity': 'critical',
-                'title': f'Database Connection Issues in {service}',
+                'title': title,
                 'description': f'{len(db_errors)} DB-related errors detected. Common error: {most_common_error[:150]}',
                 'detected_by': 'db_issue_detector'
             }
@@ -204,12 +220,15 @@ class IncidentDetector:
             avg_connections = statistics.mean(recent_connections)
             
             if avg_connections > self.thresholds['db_connections_threshold']:
+                import hashlib
+                title = f'Database Connection Pool Exhaustion in {service}'
+                incident_id = f"inc_{hashlib.md5(f'{service}:{title}'.encode()).hexdigest()[:12]}"
                 return {
-                    'id': f"incident_{service}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+                    'id': incident_id,
                     'timestamp': datetime.now(),
                     'service': service,
                     'severity': 'critical',
-                    'title': f'Database Connection Pool Exhaustion in {service}',
+                    'title': title,
                     'description': f'Connection pool at {avg_connections:.0f}% capacity',
                     'detected_by': 'db_issue_detector'
                 }

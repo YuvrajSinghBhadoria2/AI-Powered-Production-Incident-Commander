@@ -1,0 +1,271 @@
+{
+  "resourceLogs": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "checkoutservice"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "production"
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "io.opentelemetry.demo"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1767373450548080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "cb6669699ad54d1393f0c34df080f073",
+              "spanId": "c56ba874d8504cf9",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450549080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "154deba5f16f4ed58566bb9e3b76c3e8",
+              "spanId": "5290845600364b75",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450550080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "fa57c08feade47e8902dfc11ef5b34c0",
+              "spanId": "45b51b6f67494799",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450551080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "3c5a6a4e79874b7680799d6ab6640352",
+              "spanId": "1bd5e089ac224051",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450552080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "d441aa99884c42288c3cf451450e5921",
+              "spanId": "103e6739c4314381",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450553080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "c509159484de4fb78a528fc23eff7514",
+              "spanId": "d167118280ba41b6",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450554080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "3e431b45ba2c47b6858147ff6b2b657f",
+              "spanId": "62d9ece25176436c",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450555080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "4703709ab19f4b3eb69b8c36fc0ed6b6",
+              "spanId": "64bf6a00bedb4b03",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450556080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "83aa9e50961f4dab9a1bea1fe5dc7355",
+              "spanId": "1ba09369d75d481d",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            },
+            {
+              "timeUnixNano": "1767373450557080896",
+              "severityText": "ERROR",
+              "severityNumber": 17,
+              "body": {
+                "stringValue": "Failed to fetch product details from productcatalogservice: timeout"
+              },
+              "traceId": "a2c7fce31934489595fea346e810d6da",
+              "spanId": "70a09febb46f4b36",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "stringValue": "500"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

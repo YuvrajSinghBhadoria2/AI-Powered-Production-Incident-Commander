@@ -19,6 +19,17 @@ class ServiceName(str, Enum):
     DATABASE = "database"
     CACHE = "cache"
     GATEWAY = "gateway"
+    # OpenTelemetry Demo services
+    AD_SERVICE = "adservice"
+    CART_SERVICE = "cartservice"
+    CHECKOUT_SERVICE = "checkoutservice"
+    CURRENCY_SERVICE = "currencyservice"
+    EMAIL_SERVICE = "emailservice"
+    FRONTEND = "frontend"
+    PAYMENT_SERVICE = "paymentservice"
+    PRODUCT_CATALOG_SERVICE = "productcatalogservice"
+    RECOMMENDATION_SERVICE = "recommendationservice"
+    SHIPPING_SERVICE = "shippingservice"
 
 
 class LogEntry(BaseModel):
@@ -127,11 +138,12 @@ class AnalyzeIncidentRequest(BaseModel):
         default="last_30_min",
         description="Time window: last_15_min, last_30_min, last_1_hour, last_6_hours"
     )
+    incident_id: Optional[str] = Field(default=None, description="Specific incident ID to analyze")
     services: Optional[List[str]] = None
     severity_threshold: Optional[IncidentSeverity] = IncidentSeverity.MEDIUM
 
 
 class AnalyzeIncidentResponse(BaseModel):
     incidents_detected: List[Incident]
-    rca_results: Optional[RCAOutput] = None
+    rca_results: List[RCAOutput] = []
     analysis_time_ms: float

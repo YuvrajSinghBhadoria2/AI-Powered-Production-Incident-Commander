@@ -1,0 +1,702 @@
+[
+  {
+    "timestamp": "2026-01-02T20:16:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 59.01567824897173,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:16:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 197.15051652160636,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:17:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 49.31773420439342,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:17:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 163.4904783726472,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:18:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 40.835696106320235,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:18:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 242.8530812791396,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:19:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 47.59395336698276,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:19:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 220.49289159472997,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:20:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 56.85898323711079,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:20:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 210.27940175294742,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:21:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 40.72048050770094,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:21:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 248.01397786141655,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:22:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 59.5726211200565,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:22:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 235.32628127854105,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:23:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 40.74345970252976,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:23:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 224.64502073773264,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:24:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 50.71284943006028,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:24:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 232.3230191139176,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:25:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 46.02734695994022,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:25:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 190.4318906746402,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:26:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 60,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:26:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 250,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:27:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 64,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:27:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 450,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:28:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 68,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:28:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 650,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:29:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 72,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:29:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 850,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:30:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 76,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:30:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 1050,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:31:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 80,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:31:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 1250,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:32:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 84,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:32:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 1450,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:33:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 88,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:33:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 1650,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:34:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 92,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:34:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 1850,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:35:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 96,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:35:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 2050,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 100,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 5540.759225193313,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 100,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 5186.155357110138,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 100,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 5209.309432294368,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 100,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 4185.05895730288,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 100,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 4938.954852956693,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:41:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 100.0,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:41:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 5000.0,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:42:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 98.0,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:42:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 4800.0,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:43:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 96.0,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:43:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 4600.0,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:44:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 94.0,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:44:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 4400.0,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:45:39.350788",
+    "service": "payment-api",
+    "metric_name": "db_connections_active",
+    "value": 92.0,
+    "unit": "count"
+  },
+  {
+    "timestamp": "2026-01-02T20:45:39.350788",
+    "service": "payment-api",
+    "metric_name": "api_latency_ms",
+    "value": 4200.0,
+    "unit": "milliseconds"
+  },
+  {
+    "timestamp": "2026-01-02T20:06:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 40.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:07:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 41.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:08:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 43.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:09:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 44.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:10:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 46.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:11:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 47.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:12:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 49.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:13:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 50.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:14:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 52.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:15:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 53.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:16:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 55.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:17:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 56.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:18:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 58.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:19:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 59.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:20:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 61.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:21:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 62.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:22:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 64.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:23:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 65.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:24:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 67.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:25:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 68.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:26:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 70.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:27:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 71.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:28:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 73.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:29:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 74.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:30:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 76.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:31:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 77.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:32:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 79.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:33:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 80.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:34:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 82.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:35:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 83.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 85.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 86.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 88.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 89.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 91.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:41:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 92.5,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:42:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 94.0,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:43:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 95,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:44:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 95,
+    "unit": "percent"
+  },
+  {
+    "timestamp": "2026-01-02T20:45:39.351111",
+    "service": "user-service",
+    "metric_name": "memory_usage_percent",
+    "value": 95,
+    "unit": "percent"
+  }
+]

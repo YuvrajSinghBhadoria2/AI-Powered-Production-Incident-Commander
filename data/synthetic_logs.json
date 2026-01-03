@@ -1,0 +1,296 @@
+[
+  {
+    "timestamp": "2026-01-02T20:16:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_8867"
+  },
+  {
+    "timestamp": "2026-01-02T20:17:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_2224"
+  },
+  {
+    "timestamp": "2026-01-02T20:18:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_9697"
+  },
+  {
+    "timestamp": "2026-01-02T20:19:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_3306"
+  },
+  {
+    "timestamp": "2026-01-02T20:20:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_3539"
+  },
+  {
+    "timestamp": "2026-01-02T20:21:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_6376"
+  },
+  {
+    "timestamp": "2026-01-02T20:22:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_5566"
+  },
+  {
+    "timestamp": "2026-01-02T20:23:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_1048"
+  },
+  {
+    "timestamp": "2026-01-02T20:24:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_8485"
+  },
+  {
+    "timestamp": "2026-01-02T20:25:39.350788",
+    "service": "payment-api",
+    "level": "info",
+    "message": "Processing payment request",
+    "trace_id": "trace_6157"
+  },
+  {
+    "timestamp": "2026-01-02T20:28:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_6944"
+  },
+  {
+    "timestamp": "2026-01-02T20:32:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_2049"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Failed to acquire database connection",
+    "trace_id": "trace_2461"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Failed to acquire database connection",
+    "trace_id": "trace_4901"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Database connection timeout after 30s",
+    "trace_id": "trace_9638"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Database connection timeout after 30s",
+    "trace_id": "trace_8340"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_4955"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Database connection timeout after 30s",
+    "trace_id": "trace_1165"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_2764"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Too many connections to database",
+    "trace_id": "trace_3821"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_6963"
+  },
+  {
+    "timestamp": "2026-01-02T20:37:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Database connection timeout after 30s",
+    "trace_id": "trace_9086"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_3262"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Database connection timeout after 30s",
+    "trace_id": "trace_2230"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_1851"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_5251"
+  },
+  {
+    "timestamp": "2026-01-02T20:38:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection refused: database unavailable",
+    "trace_id": "trace_1068"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_6904"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Too many connections to database",
+    "trace_id": "trace_8905"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Database connection timeout after 30s",
+    "trace_id": "trace_2768"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Failed to acquire database connection",
+    "trace_id": "trace_3610"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Failed to acquire database connection",
+    "trace_id": "trace_2987"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.350788",
+    "service": "payment-api",
+    "level": "critical",
+    "message": "Database connection timeout after 30s",
+    "trace_id": "trace_2242"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Failed to acquire database connection",
+    "trace_id": "trace_4530"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Failed to acquire database connection",
+    "trace_id": "trace_6068"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection refused: database unavailable",
+    "trace_id": "trace_6348"
+  },
+  {
+    "timestamp": "2026-01-02T20:40:39.350788",
+    "service": "payment-api",
+    "level": "error",
+    "message": "Connection pool exhausted: max 100 connections reached",
+    "trace_id": "trace_9652"
+  },
+  {
+    "timestamp": "2026-01-02T20:34:39.351111",
+    "service": "user-service",
+    "level": "error",
+    "message": "Memory allocation failed",
+    "trace_id": "trace_9224"
+  },
+  {
+    "timestamp": "2026-01-02T20:36:39.351111",
+    "service": "user-service",
+    "level": "error",
+    "message": "Memory usage at 95%",
+    "trace_id": "trace_2485"
+  },
+  {
+    "timestamp": "2026-01-02T20:39:39.351111",
+    "service": "user-service",
+    "level": "error",
+    "message": "OutOfMemoryError: Java heap space",
+    "trace_id": "trace_4216"
+  },
+  {
+    "timestamp": "2026-01-02T20:43:39.351111",
+    "service": "user-service",
+    "level": "critical",
+    "message": "Memory allocation failed",
+    "trace_id": "trace_8134"
+  },
+  {
+    "timestamp": "2026-01-02T20:44:39.351111",
+    "service": "user-service",
+    "level": "critical",
+    "message": "Memory allocation failed",
+    "trace_id": "trace_9618"
+  }
+]
